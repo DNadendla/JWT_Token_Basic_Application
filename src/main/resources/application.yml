@@ -11,15 +11,15 @@ spring:
       show-sql: true
       ## Data Definition properties
       hibernate:
-         ddl-auto: create
+         ddl-auto: update
       properties:
          dialect: org.hibernate.dialect.MySQL5Dialect
    
    mail:
       host: smtp.gmail.com
       port: 587
-      username: dspnadendla@gmail.com
-      password: bmtytiyprmpyhwzi      
+      username: 91919191991@gmail.com
+      password: 123131212321      
       properties.mail.smtp.auth: true
       properties.mail.smtp.starttls.enable: true
 

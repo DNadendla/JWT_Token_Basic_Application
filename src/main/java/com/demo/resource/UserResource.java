@@ -122,10 +122,10 @@ public class UserResource extends CustomExceptionHandling {
     @GetMapping("/resetpassword/{email}")
     public ResponseEntity<CustomHttpResponse> resetPassword(@PathVariable("email") String email) throws MessagingException, EmailNotFoundException {
         userService.resetPassword(email);
-        return prepareResponse(OK, "Email Sent to" + email);
+        return prepareResponse(OK, "An email with new password was sent to " + email);
     }
 	
-    @DeleteMapping("/delete/{username}")
+    @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasAnyAuthority('user:delete')")
     public ResponseEntity<CustomHttpResponse> deleteUser(@PathVariable("id") Long id) throws IOException {
         userService.deleteUser(id);

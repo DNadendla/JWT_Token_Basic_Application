@@ -30,7 +30,7 @@ import com.demo.exception.domain.EmailExistsException;
 import com.demo.exception.domain.EmailNotFoundException;
 import com.demo.exception.domain.UserNotFoundException;
 import com.demo.exception.domain.UsernameExistsException;
-import com.demo.repository.Userepository;
+import com.demo.repository.UserRepository;
 import com.demo.service.EmailService;
 import com.demo.service.LoginAttemptService;
 import com.demo.service.UserService;
@@ -44,7 +44,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Autowired
-	private Userepository userRepository;
+	private UserRepository userRepository;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -165,7 +165,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public List<User> getUsers() {
-		return null;
+		return userRepository.findAll();
 	}
 
 	@Override

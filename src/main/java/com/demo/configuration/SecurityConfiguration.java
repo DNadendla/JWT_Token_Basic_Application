@@ -20,6 +20,9 @@ import com.demo.filter.JwtAccessDeniedHandler;
 import com.demo.filter.JwtAuthenticationEntryPoint;
 import com.demo.filter.JwtAuthorizationFilter;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -43,11 +46,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		log.info("SecurityConfiguration :: configure(AuthenticationManagerBuilder auth) ==> Configuring User Details Service");
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		log.info("SecurityConfiguration :: configure(HttpSecurity http) ==> Configuring urls, filters, etc relateed to Security");
 		http.csrf().disable() //Disables Cross Site Request Forgery
 		.cors() // Adding Cross origin resource sharing  
 		.and()
@@ -65,6 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
+		log.info("authenticationManagerBean initialization");
 		return super.authenticationManagerBean(); 
 	}
 	
